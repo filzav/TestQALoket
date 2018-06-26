@@ -8,7 +8,7 @@ Terdapat sebuah kode yaitu AutomationPractice.py
 Pada bagian ini akan dijelaskan apa saja yang perlu diinstall untuk menjalankan kode ini
 
 ```
-Python ver 2.7.13.
+Python ver 2.7.14
 Selenium 3.11
 Chrome Webdriver
 ```
