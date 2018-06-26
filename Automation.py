@@ -22,15 +22,13 @@ class Automation(unittest.TestCase):
         #2 Change language to English
         driver.find_element_by_xpath('//*[@id="main"]/div[1]/div/div[1]/a[2]').click()
 
-        #2 Click Quantity VVIP then buy 1 ticket
+        #3 Click Quantity VVIP then buy 2 tickets
         vvip = Select(driver.find_element_by_id('ticket_1625_4905'))
-        vvip.select_by_value('1')
-        time.sleep(5)
-        self.assertEqual('Rp. 50.000', driver.find_element_by_xpath('//*[@id="new_price_4905"]').text)
+        vvip.select_by_value('2')
         driver.find_element_by_id('buy_ticket').click()
         self.assertIn('Sign In', driver.find_element_by_xpath('//*[@id="form-register"]/div/div[2]/div/a').text)
 
-        #3 Insert Data
+        #4 Insert Data
         first = driver.find_element_by_xpath('//*[@id="form-register"]/div/div[4]/div[1]/div/div[1]/div/input')
         first.send_keys('Filza')
         last = driver.find_element_by_xpath('//*[@id="form-register"]/div/div[4]/div[1]/div/div[2]/div/input')
@@ -46,14 +44,16 @@ class Automation(unittest.TestCase):
         driver.find_element_by_xpath('//*[@id="form-register"]/div/div[6]/div/div/button').click()
         self.assertIn('Apply', driver.find_element_by_xpath('//*[@id="form-register"]/div/div[1]/div/div[2]/button').text)
 
-        #4 Choose Gopay
+        #5 Choose Gopay
         gopay = driver.find_element_by_xpath('//*[@id="payment-method"]/div[2]/div[1]/div[4]/label/span')
         gopay.click()
         driver.execute_script('window.scrollTo(0, 500)')
+        time.sleep(5)
+        self.assertEqual('Rp. 100.000', driver.find_element_by_xpath('//*[@id="form-register"]/div/div[4]/div/table/tbody/tr[1]/td[4]').text)
         wait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'btn-submit'))).click()
         self.assertIn('Pay Now', driver.find_element_by_xpath('//*[@id="submit-button"]').text)
 
-        #5 Checkout
+        #6 Checkout
         pay = driver.find_element_by_xpath('//*[@id="submit-button"]')
         pay.click()
         self.assertIn('GO-PAY Payment Instruction', driver.find_element_by_xpath('//*[@id="main"]/div[2]/div/div[1]/h4').text)
@@ -67,15 +67,13 @@ class Automation(unittest.TestCase):
         #2 Change language to English
         driver.find_element_by_xpath('//*[@id="main"]/div[1]/div/div[1]/a[2]').click()
 
-        #2 Click Quantity VVIP then buy 1 ticket
+        #3 Click Quantity VIP and VVIP 1 tickets
         vvip = Select(driver.find_element_by_id('ticket_1625_4905'))
-        vvip.select_by_value('1')
-        time.sleep(5)
-        self.assertEqual('Rp. 50.000', driver.find_element_by_xpath('//*[@id="new_price_4905"]').text)
+        vvip.select_by_value('2')
         driver.find_element_by_id('buy_ticket').click()
         self.assertIn('Sign In', driver.find_element_by_xpath('//*[@id="form-register"]/div/div[2]/div/a').text)
 
-        #3 Insert Data
+        #4 Insert Data
         first = driver.find_element_by_xpath('//*[@id="form-register"]/div/div[4]/div[1]/div/div[1]/div/input')
         first.send_keys('Filza')
         last = driver.find_element_by_xpath('//*[@id="form-register"]/div/div[4]/div[1]/div/div[2]/div/input')
@@ -91,9 +89,11 @@ class Automation(unittest.TestCase):
         driver.find_element_by_xpath('//*[@id="form-register"]/div/div[6]/div/div/button').click()
         self.assertIn('Apply', driver.find_element_by_xpath('//*[@id="form-register"]/div/div[1]/div/div[2]/button').text)
 
-        #4 Choose Alfamart
+        #5 Choose Alfamart
         alfamart = driver.find_element_by_xpath('//*[@id="payment-method"]/div[2]/div[1]/div[7]/label/span')
         alfamart.click()
+        time.sleep(5)
+        self.assertEqual('Rp. 100.000', driver.find_element_by_xpath('//*[@id="form-register"]/div/div[4]/div/table/tbody/tr[1]/td[4]').text)
         driver.execute_script('window.scrollTo(0, 500)')
         wait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'btn-submit'))).click()
         self.assertIn('Alfamart', driver.find_element_by_xpath('//*[@id="main"]/div[2]/div/div[1]/h4').text)

@@ -1,0 +1,11 @@
+Test case yang digunakan adalah:
+
+1. Memilih tiket yaitu 2 tiket VVIP (2 x 50.000).
+1a. Tidak memilih tiket sama sekali.
+2. Mengisi data user yaitu nama depan, nama belakang, email, nomor identitas, telepon dan jenis kelamin.
+2a. Tidak mengisi nama depan.
+3. Memilih metode pembayaran yaitu GO-PAY dan Alfamart.
+4. Mengecek total harga sesuai dengan pemesanan.
+5. Mengecek apakah QR code pada metode GO-PAY berhasil tergenerate dan petunjuk pembayaran Alfamart telah diberitahukan.
+
+NB: 1a dan 2a merupakan test case untuk negative test
